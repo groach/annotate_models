@@ -35,7 +35,8 @@ unless File.respond_to?(:exists?)
 end
 
 def capture_stderr
-  old, $stderr = $stderr, StringIO.new
+  old = $stderr
+  $stderr = StringIO.new
   yield
   $stderr.string
 ensure
